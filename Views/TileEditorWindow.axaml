@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="UnixMedia.Views.TileEditorWindow"
+        Title="Add tile"
+        Width="560" SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#111827">
+
+    <Window.Styles>
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="#CBD5E1" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,0,0,6" />
+        </Style>
+        <Style Selector="ListBox#ColorList ListBoxItem">
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+    </Window.Styles>
+
+    <StackPanel Margin="28" Spacing="18">
+        <TextBlock x:Name="HeaderText" Text="Add tile" FontSize="24" FontWeight="Bold" Foreground="White" />
+
+        <StackPanel>
+            <TextBlock Classes="label" Text="Name" />
+            <TextBox x:Name="NameBox" PlaceholderText="e.g. YouTube" MaxLength="60" />
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Classes="label" Text="URL" />
+            <TextBox x:Name="UrlBox" PlaceholderText="https://www.example.com" />
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Classes="label" Text="Icon" />
+            <Grid ColumnDefinitions="Auto,*">
+                <Border x:Name="PreviewFrame" Width="150" Height="106" CornerRadius="10" ClipToBounds="True">
+                    <Panel>
+                        <Image x:Name="PreviewImage" Stretch="Uniform" Margin="14" />
+                        <TextBlock x:Name="PreviewInitial" FontSize="48" FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Panel>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="16,0,0,0" Spacing="8" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button x:Name="BrowseButton" Content="Choose image…" />
+                        <Button x:Name="ClearIconButton" Content="No image" />
+                    </StackPanel>
+                    <TextBlock Text="PNG, JPG, BMP, GIF, WebP or ICO. Without an image the first letter of the name is shown."
+                               Foreground="#64748B" FontSize="12" TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Classes="label" Text="Tile colour" />
+            <ListBox x:Name="ColorList" Background="Transparent" SelectionMode="Single,AlwaysSelected">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+
+        <TextBlock x:Name="ErrorText" Foreground="#F87171" IsVisible="False" TextWrapping="Wrap" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button x:Name="CancelButton" Content="Cancel" IsCancel="True" MinWidth="90" HorizontalContentAlignment="Center" />
+            <Button x:Name="SaveButton" Content="Save" IsDefault="True" MinWidth="90" HorizontalContentAlignment="Center"
+                    Classes="accent" />
+        </StackPanel>
+    </StackPanel>
+</Window>
