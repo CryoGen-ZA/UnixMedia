@@ -3,6 +3,9 @@
 A cross-platform (Windows / Linux / macOS) smart-TV-style launcher written in C# with Avalonia.
 The home screen shows big tiles; activating a tile opens its URL in the OS default browser.
 
+![Demo of the app](./RepoExtras/UnixMediaIntro.GIF)
+
+
 ## Run
 
 ```sh
